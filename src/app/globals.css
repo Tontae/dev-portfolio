@@ -10,3 +10,8 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }
+
+/* ซ่อนเมาส์ปกติของระบบทั้งหน้าเว็บ เพื่อใช้ Custom Cursor แทน */
+* {
+  cursor: none !important;
+}

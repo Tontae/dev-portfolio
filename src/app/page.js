@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import Reveal from '../components/Reveal'; // นำเข้า Component แอนิเมชันของเรา
+import Reveal from '../components/Reveal';
+import FloatingSymbols from '../components/FloatingSymbols';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f8f9fa] selection:bg-gray-900 selection:text-white overflow-hidden">
+    <main className="min-h-screen bg-[#f8f9fa] selection:bg-gray-900 selection:text-white">
       
       {/* 1. NAVBAR (ไม่ใส่แอนิเมชัน ให้โหลดมาเห็นเลยทันที) */}
       <nav className="sticky top-0 z-50 flex items-center justify-between p-6 bg-white border-b-4 border-gray-900">
@@ -24,23 +25,31 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 2. HERO SECTION */}
-      <section className="py-32 px-6 flex flex-col items-center text-center bg-white border-b-4 border-gray-900">
-        <Reveal delay={0.1}>
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-gray-900">Hello, I'm Tontae.</h1>
-        </Reveal>
+      {/* 2. HERO SECTION (เพิ่ม relative และ overflow-hidden) */}
+      <section className="relative py-32 px-6 flex flex-col items-center text-center bg-[#d43e35] border-b-4 border-gray-900 overflow-hidden">
         
-        <Reveal delay={0.3}>
-          <p className="text-xl font-medium mb-10 max-w-2xl text-gray-700 mx-auto">
-            Game Developer & Programmer. I specialize in building experiences using Unity and modern Web technologies.
-          </p>
-        </Reveal>
-        
-        <Reveal delay={0.5} type="pop">
-          <button className="px-8 py-4 bg-white border-4 border-gray-900 font-black text-lg shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all text-gray-900 cursor-pointer">
-            View My Resume
-          </button>
-        </Reveal>
+        {/* 2. วาง Background Animation ไว้ชั้นล่างสุด */}
+        <FloatingSymbols />
+
+        {/* 3. ครอบเนื้อหาหลักด้วย relative z-10 เพื่อให้อยู่ด้านหน้าสุด */}
+        <div className="relative z-10 flex flex-col items-center w-full">
+          <Reveal delay={0.1}>
+            <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white">Hello, I'm Tontae.</h1>
+          </Reveal>
+          
+          <Reveal delay={0.3}>
+            {/* เปลี่ยนข้อความเป็น text-white ให้เข้ากับพื้นแดง */}
+            <p className="text-xl font-medium mb-10 max-w-2xl text-gray-1000 mx-auto">
+              Game Developer & Programmer. I specialize in building immersive games and robust core systems using Unity, Roblox, and other modern game engines.
+            </p>
+          </Reveal>
+          
+          <Reveal delay={0.5} type="pop">
+            <button className="px-8 py-4 bg-white border-4 border-gray-900 font-black text-lg shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all text-gray-900 cursor-pointer hover:bg-gray-900 hover:text-white">
+              View My Resume
+            </button>
+          </Reveal>
+        </div>
       </section>
 
       {/* 3. PROJECTS SECTION */}

@@ -1,13 +1,11 @@
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll"; 
+import CustomCursor from "../components/CustomCursor"; // 1. นำเข้า Custom Cursor
 
-// 1. นำเข้าฟอนต์จาก Google Fonts (เลือกได้ตามใจชอบ)
 import { Space_Grotesk } from 'next/font/google';
 
-// 2. ตั้งค่าฟอนต์
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
-  // กำหนดน้ำหนักฟอนต์ที่เราใช้ในเว็บ (ปกติ 400 คือธรรมดา, 700 หนา, 900 หนามาก)
   weight: ['400', '500', '700'], 
 });
 
@@ -19,8 +17,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* 3. แทรก spaceGrotesk.className ลงไปใน tag body */}
       <body className={`${spaceGrotesk.className} antialiased bg-[#f8f9fa] text-gray-900`}>
+        
+        {/* 2. เรียกใช้งาน Custom Cursor ให้ทำงานครอบคลุมทั้งเว็บ */}
+        <CustomCursor /> 
+        
         <SmoothScroll>
           {children}
         </SmoothScroll>
