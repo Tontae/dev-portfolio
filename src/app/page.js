@@ -9,6 +9,27 @@ import Hero3D from '../components/Hero3D'
 
 const projectsData = [
   {
+    exe: "tales_twist.exe",
+    coverImg: "/tales-twist-cover.png",
+    youtubeId: "eovw5RUtvKw",
+    badge: "Senior Project",
+    title: "Tales Twist",
+    role: "Solo Developer • CMU",
+    roleColor: "text-[#9B4F96]",
+    desc: <>A story-driven puzzle game based on Aesop's Fables. Trapped in a corrupted fairy tale world, you must secretly intervene, solve puzzles, and alter events to restore the original storylines—all without letting the characters know you exist.</>,
+    tags: [
+      { name: "Unity", bg: "bg-[#222C37]", text: "text-white" },
+      { name: "C#", bg: "bg-[#9B4F96]", text: "text-white" },
+      { name: "Game Logic", bg: "bg-[#00A2FF]", text: "text-white" },
+      { name: "Solo Dev", bg: "bg-[#f8f9fa]", text: "text-gray-900" }
+    ],
+    buttons: (
+      <div className="flex gap-2 sm:gap-4 shrink-0 w-full mt-auto">
+        <a href="https://www.youtube.com/watch?v=eovw5RUtvKw" target="_blank" rel="noopener noreferrer" className="flex-1 text-center py-2 sm:py-3 bg-[#FF0000] border-2 sm:border-4 border-gray-900 font-black text-[9px] sm:text-xs text-white shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all uppercase block">Watch on YouTube</a>
+      </div>
+    )
+  },
+  {
     exe: "outlander_mmo.exe",
     coverImg: "/outlander-cover.webp",
     youtubeId: null,
@@ -27,27 +48,6 @@ const projectsData = [
       <div className="flex gap-2 sm:gap-4 shrink-0 w-full mt-auto">
         <a href="https://apps.apple.com/us/app/outlanders-mmo/id6746841661" target="_blank" rel="noopener noreferrer" className="flex-1 text-center py-2 sm:py-3 bg-gray-800 border-2 sm:border-4 border-gray-900 font-black text-[9px] sm:text-xs text-white shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all uppercase block">App Store</a>
         <a href="https://play.google.com/store/apps/details?id=com.outlanders.outlanders&hl=en_US" target="_blank" rel="noopener noreferrer" className="flex-1 text-center py-2 sm:py-3 bg-[#3DDC84] border-2 sm:border-4 border-gray-900 font-black text-[9px] sm:text-xs text-[#111827] shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all uppercase block">Google Play</a>
-      </div>
-    )
-  },
-  {
-    exe: "tales_twist.exe",
-    coverImg: "/tales-twist-cover.png",
-    youtubeId: "eovw5RUtvKw",
-    badge: "Senior Project",
-    title: "Tales Twist",
-    role: "Solo Developer • CMU",
-    roleColor: "text-[#9B4F96]",
-    desc: <>A story-driven puzzle game based on Aesop's Fables. Trapped in a corrupted fairy tale world, you must secretly intervene, solve puzzles, and alter events to restore the original storylines—all without letting the characters know you exist.</>,
-    tags: [
-      { name: "Unity", bg: "bg-[#222C37]", text: "text-white" },
-      { name: "C#", bg: "bg-[#9B4F96]", text: "text-white" },
-      { name: "Game Logic", bg: "bg-[#00A2FF]", text: "text-white" },
-      { name: "Solo Dev", bg: "bg-[#f8f9fa]", text: "text-gray-900" }
-    ],
-    buttons: (
-      <div className="flex gap-2 sm:gap-4 shrink-0 w-full mt-auto">
-        <a href="https://www.youtube.com/watch?v=eovw5RUtvKw" target="_blank" rel="noopener noreferrer" className="flex-1 text-center py-2 sm:py-3 bg-[#FF0000] border-2 sm:border-4 border-gray-900 font-black text-[9px] sm:text-xs text-white shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all uppercase block">Watch on YouTube</a>
       </div>
     )
   },
@@ -186,7 +186,15 @@ export default function Home() {
       <nav className="sticky top-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-white border-b-4 border-gray-900">
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
-            <Image src="/logo.png" alt="Tontae Logo" width={160} height={48} className="h-10 sm:h-12 w-auto object-contain" priority />
+            <Image 
+              src="/logo.png" 
+              alt="Tontae Logo" 
+              width={160} 
+              height={48} 
+              className="h-10 sm:h-12 w-auto object-contain" 
+              style={{ width: 'auto', height: 'auto' }}
+              priority 
+            />
           </a>
         </div>
         <div className="hidden md:flex flex-1 justify-center items-center gap-12 font-bold text-lg">
@@ -275,7 +283,13 @@ export default function Home() {
                           {project.youtubeId ? (
                             <YouTubeEmbed videoId={project.youtubeId} coverSrc={project.coverImg} />
                           ) : (
-                            <Image src={project.coverImg} alt={project.title} fill className="object-cover" />
+                            <Image 
+                              src={project.coverImg} 
+                              alt={project.title} 
+                              fill 
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              className="object-cover" 
+                            />
                           )}
                           <div className="absolute top-2 right-2 bg-white border-2 border-gray-900 px-1.5 py-0.5 sm:px-2 sm:py-1 font-black text-[8px] sm:text-[10px] uppercase shadow-[2px_2px_0px_#111827] z-10 pointer-events-none">
                             {project.badge}
@@ -313,9 +327,19 @@ export default function Home() {
 
       {/* 4. SKILLS SECTION */}
       <section id="skills" className="py-16 sm:py-24 px-6 bg-white border-b-4 border-gray-900 text-center">
-        <Reveal delay={0.1}>
-          <h2 className="text-4xl sm:text-5xl font-black mb-8 sm:mb-12 text-gray-900 uppercase italic">Skills</h2>
-        </Reveal>
+        <div className="max-w-[1400px] mx-auto px-6 mb-8 sm:mb-12 flex flex-col items-center justify-center w-full">
+          <Reveal delay={0.1}>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 uppercase italic text-center w-full">
+              Skills
+            </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            {/* 🌟 เปลี่ยนประโยคตรงนี้ได้ตามใจชอบเลยครับ! */}
+            <p className="mt-3 sm:mt-4 text-[10px] sm:text-sm font-bold text-gray-600 uppercase tracking-widest max-w-2xl mx-auto text-center w-full">
+              My core technologies. Highly adaptable to any engine or pipeline required.
+            </p>
+          </Reveal>
+        </div>
         
         <div className="flex justify-center gap-4 sm:gap-6 flex-wrap max-w-5xl mx-auto">
           {[
@@ -397,16 +421,12 @@ export default function Home() {
 
       {/* 6. FOOTER - 🌟 แก้ไข: ใช้ whitespace-nowrap และลดขนาดฟอนต์ในมือถือเพื่อห้ามตกบรรทัดเด็ดขาด */}
       <footer className="py-8 sm:py-12 px-4 sm:px-6 bg-white border-t-4 border-gray-900 text-center overflow-hidden">
-        <Reveal delay={0.1}>
           <h4 className="text-sm sm:text-2xl font-black text-gray-900 uppercase italic whitespace-nowrap tracking-tighter sm:tracking-normal">
             Tontae /// Software Engineer
           </h4>
-        </Reveal>
-        
         <p className="font-medium text-xs sm:text-base text-gray-700 max-w-xl mx-auto mb-2 mt-2 sm:mt-4 whitespace-nowrap">
           © {new Date().getFullYear()} Dullayathit Phittayapanjarat.
         </p>
-        
         <p className="text-[10px] sm:text-xs font-mono text-gray-400 italic whitespace-nowrap">
           Made with <span className="text-red-500 hover:scale-125 inline-block transition-transform duration-100">♥</span> and lots of Coffee in Chiang Mai.
         </p>

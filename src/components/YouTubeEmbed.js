@@ -26,10 +26,11 @@ export default function YouTubeEmbed({ videoId, coverSrc }) {
       onClick={() => setIsPlaying(true)}
     >
       <Image 
-        src={coverSrc}
-        alt="Video Cover"
-        fill
-        className="object-cover group-hover:scale-105 transition-transform duration-500"
+        src={coverSrc} 
+        alt="Video cover" 
+        fill 
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover" 
       />
       
       {/* พื้นหลังจางๆ ตอนเอาเมาส์มาชี้ */}
