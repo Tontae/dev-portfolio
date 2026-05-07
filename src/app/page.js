@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Reveal from '../components/Reveal';
 import FloatingSymbols from '../components/FloatingSymbols';
 import YouTubeEmbed from '../components/YouTubeEmbed';
+import Hero3D from '../components/Hero3D'
 
 const projectsData = [
   {
@@ -204,6 +205,7 @@ export default function Home() {
       <section className="relative py-24 sm:py-32 px-6 flex flex-col items-center text-center bg-[#d43e35] border-b-4 border-gray-900 overflow-hidden">
         <FloatingSymbols />
         <div className="relative z-10 flex flex-col items-center w-full">
+          {/*<Hero3D />*/}
           <Reveal delay={0.1}>
             <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tight text-white">Hello, I'm Tontae.</h1>
           </Reveal>
