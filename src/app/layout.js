@@ -15,12 +15,12 @@ export const metadata = {
   keywords: ['Game Developer', 'Unity', 'Roblox', 'C#', 'Software Engineer', 'Thailand'],
   openGraph: {
     title: 'Tontae | Game Developer Portfolio',
-    description: 'Immersive games and robust core systems developer.',
+    description: 'Game Developer & Software Engineer specializing in Unity, Roblox, and robust multiplayer systems. Explore my portfolio of immersive projects.',
     url: 'http://tontae-developer-portfolio.vercel.app/', // เปลี่ยนเป็น URL จริงของคุณ
     siteName: 'Tontae Portfolio',
     images: [
       {
-        url: '/tales-twist-cover.png', // รูปที่จะโชว์ตอนแชร์ลิงก์ (แนะนำขนาด 1200x630)
+        url: '/logo.png', // รูปที่จะโชว์ตอนแชร์ลิงก์ (แนะนำขนาด 1200x630)
         width: 1200,
         height: 630,
       },
@@ -31,8 +31,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Tontae | Game Developer Portfolio',
-    description: 'Immersive games and robust core systems developer.',
-    images: ['/tales-twist-cover.png'], 
+    description: 'Game Developer & Software Engineer specializing in Unity, Roblox, and robust multiplayer systems. Explore my portfolio of immersive projects.',
+    images: ['/logo.png'], 
   },
 };
 
