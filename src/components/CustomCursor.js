@@ -37,8 +37,8 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      // mix-blend-difference จะทำให้เมาส์เปลี่ยนสีตรงข้ามกับพื้นหลังเสมอ (มองเห็นได้ทุกที่)
-      className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference flex items-center justify-center"
+      // 🌟 แก้ไขตรงนี้: เพิ่ม hidden md:flex เพื่อซ่อนในมือถือ (จอเล็ก) และค่อยโชว์เป็น flex ในจอ PC (md ขึ้นไป)
+      className="hidden md:flex fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference items-center justify-center"
       animate={{
         x: mousePosition.x - 16, // ลบ 16 เพื่อให้จุดศูนย์กลางอยู่ตรงกลางเมาส์พอดี (ขนาด 32/2)
         y: mousePosition.y - 16,

@@ -11,7 +11,8 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-/* ซ่อนเมาส์ปกติของระบบทั้งหน้าเว็บ เพื่อใช้ Custom Cursor แทน */
-* {
-  cursor: none !important;
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
