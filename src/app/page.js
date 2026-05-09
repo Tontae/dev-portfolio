@@ -51,12 +51,11 @@ export default function Home() {
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
             <Image 
-              src="/logo.png" 
+              src="/logo.svg"
               alt="Tontae Logo" 
-              width={100} 
-              height={10} 
+              width={160} 
+              height={48} 
               className="h-10 sm:h-12 w-auto object-contain" 
-              style={{ width: 'auto', height: 'auto' }}
               priority 
             />
           </a>

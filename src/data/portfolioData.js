@@ -1,7 +1,7 @@
 export const projectsData = [
   {
       exe: "tales_twist.exe",
-      coverImg: "/tales-twist-cover.png",
+      coverImg: "/project-cover/tales-twist-cover.png",
       youtubeId: "eovw5RUtvKw",
       badge: "Senior Project",
       title: "Tales Twist",
@@ -22,7 +22,7 @@ export const projectsData = [
     },
     {
       exe: "outlander_mmo.exe",
-      coverImg: "/outlander-cover.webp",
+      coverImg: "/project-cover/outlander-cover.webp",
       youtubeId: null,
       badge: "Live Now",
       title: "Outlander MMO",
@@ -44,7 +44,7 @@ export const projectsData = [
     },
     {
       exe: "not_me_webgl.exe",
-      coverImg: "/not-me-cover.png",
+      coverImg: "/project-cover/not-me-cover.png",
       youtubeId: null,
       badge: "Horror Jam 2023",
       title: "Not Me",
@@ -65,7 +65,7 @@ export const projectsData = [
     },
     {
       exe: "fall_race.exe",
-      coverImg: "/fall-race-cover.webp",
+      coverImg: "/project-cover/fall-race-cover.webp",
       youtubeId: null,
       badge: "Live Now",
       title: "Fall Race",
@@ -91,7 +91,7 @@ export const projectsData = [
     },
     {
       exe: "trick_or_seek.exe",
-      coverImg: "/trick-or-seek-cover.png",
+      coverImg: "/project-cover/trick-or-seek-cover.png",
       youtubeId: null,
       badge: "Live Now",
       title: "Trick or Seek",
@@ -116,7 +116,7 @@ export const projectsData = [
     },
     {
       exe: "siam_playground.exe",
-      coverImg: "/siam-playground-cover.png", // อย่าลืมเซฟรูปใส่โฟลเดอร์ public นะครับ
+      coverImg: "/project-cover/siam-playground-cover.png", // อย่าลืมเซฟรูปใส่โฟลเดอร์ public นะครับ
       youtubeId: null,
       badge: "Roblox",
       title: "Siam Playground",

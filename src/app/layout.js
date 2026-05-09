@@ -20,7 +20,7 @@ export const metadata = {
     siteName: 'Tontae Portfolio',
     images: [
       {
-        url: '/logo.png', // รูปที่จะโชว์ตอนแชร์ลิงก์ (แนะนำขนาด 1200x630)
+        url: '/cover-display.png', // รูปที่จะโชว์ตอนแชร์ลิงก์ (แนะนำขนาด 1200x630)
         width: 1200,
         height: 630,
       },
