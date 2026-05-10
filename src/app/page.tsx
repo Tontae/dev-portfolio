@@ -42,7 +42,11 @@ export default function Home() {
       <nav className="sticky top-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-white border-b-4 border-gray-900">
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
-            <Image src="/logo.svg" alt="Tontae Logo" width={48} height={48} className="h-10 sm:h-12 w-auto object-contain" loading="eager"/>
+            <img 
+              src="/logo.svg"
+              alt="Tontae Logo" 
+              className="h-14 sm:h-16 w-auto object-contain" 
+            />
           </a>
         </div>
         <div className="hidden md:flex flex-1 justify-center items-center gap-12 font-bold text-lg">
