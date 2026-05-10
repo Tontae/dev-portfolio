@@ -13,12 +13,10 @@ interface FloatingSymbol {
 }
 
 export default function FloatingSymbols() {
-  const [mounted, setMounted] = useState(false);
   // 🌟 2. ใส่ <FloatingSymbol[]> เพื่อบอกว่า symbols เป็น Array ของข้อมูลด้านบนนะ
   const [symbols, setSymbols] = useState<FloatingSymbol[]>([]);
 
   useEffect(() => {
-    setMounted(true);
     const count = 12;
     const laneWidth = 100 / count; 
 
@@ -37,10 +35,9 @@ export default function FloatingSymbols() {
       };
     });
     
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSymbols(generatedSymbols.sort(() => Math.random() - 0.5));
   }, []);
-
-  if (!mounted) return null;
 
   // 🌟 4. ระบุว่ารับค่า id เป็นตัวเลข (number)
   const renderShape = (id: number) => {
@@ -84,7 +81,7 @@ export default function FloatingSymbols() {
   };
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" suppressHydrationWarning>
       <style>{`
         @keyframes floatAndSpin {
           0% { top: 110%; transform: rotate(0deg); opacity: 0; }

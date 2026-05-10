@@ -1,11 +1,13 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Reveal from '../components/Reveal';
-import FloatingSymbols from '../components/FloatingSymbols';
-import YouTubeEmbed from '../components/YouTubeEmbed';
 import { projectsData, skillsData } from '../data/portfolioData';
+
+const FloatingSymbols = dynamic(() => import('../components/FloatingSymbols'), { ssr: false });
+const YouTubeEmbed = dynamic(() => import('../components/YouTubeEmbed'), { ssr: false });
 import { motion, AnimatePresence } from 'framer-motion';
 
 const extendedProjects = Array(10).fill(projectsData).flat();
@@ -23,6 +25,7 @@ export default function Home() {
     const cmd = `fetch_skills --category "${activeTab}"`;
     let currentIndex = 0;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowOutput(false);
     setTypedCommand('');
 
@@ -71,9 +74,11 @@ export default function Home() {
       <nav className="sticky top-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-white border-b-4 border-gray-900">
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
-            <img 
+            <Image 
               src="/logo.svg"
               alt="Tontae Logo" 
+              width={192}
+              height={48}
               className="h-10 sm:h-12 w-auto object-contain" 
             />
           </a>
@@ -346,10 +351,11 @@ export default function Home() {
                   >
                     {/* 🌟 เรียกใช้ไฟล์จาก public/line-logo.svg */}
                     <div className="relative w-6 h-6 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-200">
-                      <img 
+                      <Image 
                         src="/line-logo.svg" 
                         alt="LINE Logo" 
-                        className="w-full h-full object-contain brightness-0 group-hover:brightness-100 transition-all duration-200" 
+                        fill
+                        className="object-contain brightness-0 group-hover:brightness-100 transition-all duration-200" 
                       />
                     </div>
                     <span className="font-bold text-lg sm:text-2xl tracking-tight">tontae_p</span>

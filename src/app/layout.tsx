@@ -62,7 +62,7 @@ export default function RootLayout({
                 window.addEventListener('load', () => {
                   setTimeout(() => {
                     const perfData = performance.getEntriesByType('navigation')[0];
-                    console.log('Page Load Time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                    // Removed console.log for production optimization
                   }, 0);
                 });
               `,
