@@ -45,7 +45,7 @@ export default function Home() {
             <img 
               src="/logo.svg"
               alt="Tontae Logo" 
-              className="h-14 sm:h-16 w-auto object-contain" 
+              className="h-10 sm:h-12 w-auto object-contain" 
             />
           </a>
         </div>
@@ -62,7 +62,7 @@ export default function Home() {
       </nav>
 
       {/* 2. HERO SECTION */}
-      <section className="relative py-24 sm:py-32 px-6 flex flex-col items-center text-center bg-[#d43e35] border-b-4 border-gray-900 overflow-hidden">
+      <section className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] lg:min-h-[90vh] justify-center px-6 flex flex-col items-center text-center bg-[#d43e35] border-b-4 border-gray-900 overflow-hidden">
         <FloatingSymbols />
         <div className="relative z-10 flex flex-col items-center w-full">
           <Reveal delay={0.1}>

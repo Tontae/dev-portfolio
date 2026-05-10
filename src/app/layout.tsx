@@ -49,7 +49,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
-        <link rel="preload" href="/cover-display.png" as="image" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#d43e35" />
       </head>
