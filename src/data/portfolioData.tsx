@@ -171,16 +171,30 @@ export const projectsData: Project[] = [
   }
 ];
 
-export const skillsData: Skill[] = [
-  { name: "Unity", color: "hover:bg-[#222C37] hover:text-white" },
-  { name: "Roblox Studio", color: "hover:bg-[#00A2FF] hover:text-white" },
-  { name: "C#", color: "hover:bg-[#9B4F96] hover:text-white" },
-  { name: "Luau", color: "hover:bg-[#000080] hover:text-white" },
-  { name: "JavaScript", color: "hover:bg-[#F7DF1E] hover:text-black" },
-  { name: "Next.js", color: "hover:bg-black hover:text-white" },
-  { name: "Tailwind", color: "hover:bg-[#38B2AC] hover:text-white" },
-  { name: "Dedicated Server", color: "hover:bg-[#4A5568] hover:text-white" },
-  { name: "Firebase", color: "hover:bg-[#FFCA28] hover:text-black" },
-  { name: "Xsolla", color: "hover:bg-[#FF0033] hover:text-white" },
-  { name: "Blender", color: "hover:bg-[#F5792A] hover:text-white" }
+export const skillsData = [
+  // --- หมวด Game Engines ---
+  { name: 'Unity', color: 'text-gray-900', category: 'Engine' },
+  { name: 'Roblox Studio', color: 'text-red-500', category: 'Engine' },
+
+  // --- หมวด Web & Backend ---
+  { name: 'React', color: 'text-cyan-500', category: 'Web' },
+  { name: 'Next.js', color: 'text-gray-900', category: 'Web' },
+  { name: 'Tailwind CSS', color: 'text-blue-400', category: 'Web' },
+  { name: 'Node.js', color: 'text-green-500', category: 'Web' },
+  { name: 'Firebase', color: 'text-yellow-500', category: 'Web' },
+
+  // --- หมวด Programming Languages ---
+  { name: 'C#', color: 'text-purple-600', category: 'Languages' },
+  { name: 'C++', color: 'text-blue-700', category: 'Languages' },
+  { name: 'C', color: 'text-blue-500', category: 'Languages' },
+  { name: 'Lua', color: 'text-blue-400', category: 'Languages' },
+  { name: 'TypeScript', color: 'text-blue-600', category: 'Languages' },
+  { name: 'JavaScript', color: 'text-yellow-500', category: 'Languages' },
+  { name: 'Python', color: 'text-blue-500', category: 'Languages' },
+  { name: 'Bash', color: 'text-gray-800', category: 'Languages' },
+
+  // --- หมวด Tools & Software ---
+  { name: 'Git', color: 'text-orange-500', category: 'Tools' },
+  { name: 'Plastic SCM', color: 'text-purple-500', category: 'Tools' },
+  { name: 'Blender', color: 'text-orange-400', category: 'Tools' }
 ];
