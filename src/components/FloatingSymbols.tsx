@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // 🌟 1. สร้าง Interface เพื่อบอกว่าข้อมูลสัญลักษณ์ 1 ตัว มีตัวเลขอะไรบ้าง
 interface FloatingSymbol {
@@ -13,10 +13,12 @@ interface FloatingSymbol {
 }
 
 export default function FloatingSymbols() {
+  const [mounted, setMounted] = useState(false);
   // 🌟 2. ใส่ <FloatingSymbol[]> เพื่อบอกว่า symbols เป็น Array ของข้อมูลด้านบนนะ
   const [symbols, setSymbols] = useState<FloatingSymbol[]>([]);
 
   useEffect(() => {
+    setMounted(true);
     const count = 12;
     const laneWidth = 100 / count; 
 
@@ -37,6 +39,8 @@ export default function FloatingSymbols() {
     
     setSymbols(generatedSymbols.sort(() => Math.random() - 0.5));
   }, []);
+
+  if (!mounted) return null;
 
   // 🌟 4. ระบุว่ารับค่า id เป็นตัวเลข (number)
   const renderShape = (id: number) => {
@@ -78,8 +82,6 @@ export default function FloatingSymbols() {
         return null;
     }
   };
-
-  if (symbols.length === 0) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

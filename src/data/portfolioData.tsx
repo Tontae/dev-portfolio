@@ -34,7 +34,7 @@ export const projectsData: Project[] = [
     title: "Tales Twist",
     role: "Solo Developer • CMU",
     roleColor: "text-[#9B4F96]",
-    desc: <>A story-driven puzzle game based on Aesop's Fables. Trapped in a corrupted fairy tale world, you must secretly intervene, solve puzzles, and alter events to restore the original storylines—all without letting the characters know you exist.</>,
+    desc: <>A story-driven puzzle game based on Aesop&apos;s Fables. Trapped in a corrupted fairy tale world, you must secretly intervene, solve puzzles, and alter events to restore the original storylines—all without letting the characters know you exist.</>,
     tags: [
       { name: "Unity", bg: "bg-[#222C37]", text: "text-white" },
       { name: "C#", bg: "bg-[#9B4F96]", text: "text-white" },
@@ -55,7 +55,7 @@ export const projectsData: Project[] = [
     title: "Outlander MMO",
     role: "Professional Work @ KOS Design",
     roleColor: "text-[#d43e35]",
-    desc: <>Cross-platform MMORPG for iOS and Android. Engineered the core networking foundation using <span className="font-bold text-gray-900">FishNet</span>. Architected the game's data structures, managing complex player data pipelines from server initialization to UI binding and gameplay systems.</>,
+    desc: <>Cross-platform MMORPG for iOS and Android. Engineered the core networking foundation using <span className="font-bold text-gray-900">FishNet</span>. Architected the game&apos;s data structures, managing complex player data pipelines from server initialization to UI binding and gameplay systems.</>,
     tags: [
       { name: "Unity", bg: "bg-[#222C37]", text: "text-white" },
       { name: "C#", bg: "bg-[#9B4F96]", text: "text-white" },
@@ -77,7 +77,7 @@ export const projectsData: Project[] = [
     title: "Not Me",
     role: "Solo Developer • Horror Jam",
     roleColor: "text-[#F5792A]",
-    desc: <>A stealth-action survival game where you play as a demon hiding among hunters. Maintain your human form by rolling the "Demon Dice" for extra time, or risk reverting to your true form! Use demonic powers to shoot, dash, and possess bodies to survive.</>,
+    desc: <>A stealth-action survival game where you play as a demon hiding among hunters. Maintain your human form by rolling the &quot;Demon Dice&quot; for extra time, or risk reverting to your true form! Use demonic powers to shoot, dash, and possess bodies to survive.</>,
     tags: [
       { name: "Unity", bg: "bg-[#222C37]", text: "text-white" },
       { name: "C#", bg: "bg-[#9B4F96]", text: "text-white" },
@@ -149,7 +149,7 @@ export const projectsData: Project[] = [
     title: "Siam Playground",
     role: "Roblox Developer @ KOS Design",
     roleColor: "text-[#00A2FF]",
-    desc: <>A multiplayer "Thai Countryside" experience blending traditional games with a rural slow-life simulator. Players can hang out, earn Merit (Boon), and join Temple Fair minigames. I engineered the <span className="font-bold text-gray-900">shop and inventory systems</span>, <span className="font-bold text-gray-900">player data saving</span> (DataStore), game settings, and programmed various <span className="font-bold text-gray-900">UI interactions</span>.</>,
+    desc: <>A multiplayer &quot;Thai Countryside&quot; experience blending traditional games with a rural slow-life simulator. Players can hang out, earn Merit (Boon), and join Temple Fair minigames. I engineered the <span className="font-bold text-gray-900">shop and inventory systems</span>, <span className="font-bold text-gray-900">player data saving</span> (DataStore), game settings, and programmed various <span className="font-bold text-gray-900">UI interactions</span>.</>,
     tags: [
       { name: "Roblox Studio", bg: "bg-[#222C37]", text: "text-white" },
       { name: "Luau", bg: "bg-[#000080]", text: "text-white" },

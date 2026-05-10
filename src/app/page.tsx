@@ -6,16 +6,6 @@ import Reveal from '../components/Reveal';
 import FloatingSymbols from '../components/FloatingSymbols';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 import { projectsData, skillsData } from '../data/portfolioData';
-import dynamic from 'next/dynamic';
-
-const Hero3D = dynamic(() => import('../components/Hero3D'), { 
-  ssr: false,
-  loading: () => (
-    <div className="h-[300px] flex items-center justify-center">
-      <div className="font-black text-white animate-pulse">LOADING 3D EXPERIENCE...</div>
-    </div>
-  )
-});
 
 const extendedProjects = Array(10).fill(projectsData).flat();
 
@@ -52,7 +42,7 @@ export default function Home() {
       <nav className="sticky top-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-white border-b-4 border-gray-900">
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
-            <img src="/logo.svg" alt="Tontae Logo" className="h-10 sm:h-12 w-auto object-contain"/>
+            <Image src="/logo.svg" alt="Tontae Logo" width={48} height={48} className="h-10 sm:h-12 w-auto object-contain" loading="eager"/>
           </a>
         </div>
         <div className="hidden md:flex flex-1 justify-center items-center gap-12 font-bold text-lg">
@@ -71,9 +61,8 @@ export default function Home() {
       <section className="relative py-24 sm:py-32 px-6 flex flex-col items-center text-center bg-[#d43e35] border-b-4 border-gray-900 overflow-hidden">
         <FloatingSymbols />
         <div className="relative z-10 flex flex-col items-center w-full">
-          {/*<Hero3D />*/}
           <Reveal delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tight text-white">Hello, I'm Tontae.</h1>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tight text-white">Hello, I&apos;m Tontae.</h1>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="text-lg sm:text-xl font-medium mb-10 max-w-2xl text-gray-1000 mx-auto">
@@ -143,7 +132,8 @@ export default function Home() {
                               alt={project.title} 
                               fill 
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              className="object-cover" 
+                              className="object-cover"
+                              priority={index === 0}
                             />
                           )}
                           <div className="absolute top-2 right-2 bg-white border-2 border-gray-900 px-1.5 py-0.5 sm:px-2 sm:py-1 font-black text-[8px] sm:text-[10px] uppercase shadow-[2px_2px_0px_#111827] z-10 pointer-events-none">
@@ -208,7 +198,7 @@ export default function Home() {
       {/* 5. CONTACT SECTION */}
       <section id="contact" className="py-16 sm:py-24 px-6 bg-[#e9ecef] text-center">
         <Reveal delay={0.1}>
-          <h2 className="text-4xl sm:text-5xl font-black mb-4 sm:mb-6 text-gray-900 uppercase">Let's Build Magic</h2>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4 sm:mb-6 text-gray-900 uppercase">Let&apos;s Build Magic</h2>
         </Reveal>
         
         <Reveal delay={0.2}>

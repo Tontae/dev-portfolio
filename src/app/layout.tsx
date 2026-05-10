@@ -12,13 +12,14 @@ const spaceGrotesk = Space_Grotesk({
 
 // 🌟 2. กำหนด Type เป็น : Metadata
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tontae-developer-portfolio.vercel.app/'),
   title: 'Tontae | Game Developer & Software Engineer',
   description: 'Portfolio of Tontae, specializing in Unity, Roblox, and Full-Stack Game Development. Explore my featured projects and technical skills.',
   keywords: ['Game Developer', 'Unity', 'Roblox', 'C#', 'Software Engineer', 'Thailand'],
   openGraph: {
     title: 'Tontae | Game Developer Portfolio',
     description: 'Game Developer & Software Engineer specializing in Unity, Roblox, and robust multiplayer systems. Explore my portfolio of immersive projects.',
-    url: 'http://tontae-developer-portfolio.vercel.app/',
+    url: 'https://tontae-developer-portfolio.vercel.app/',
     siteName: 'Tontae Portfolio',
     images: [
       {
@@ -46,7 +47,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/cover-display.png" as="image" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#d43e35" />
+      </head>
       <body className={`${spaceGrotesk.className} antialiased bg-[#f8f9fa] text-gray-900`}>
+        
+        {/* Performance monitoring in development */}
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.addEventListener('load', () => {
+                  setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log('Page Load Time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                  }, 0);
+                });
+              `,
+            }}
+          />
+        )}
         
         {/* 2. เรียกใช้งาน Custom Cursor ให้ทำงานครอบคลุมทั้งเว็บ */}
         <CustomCursor /> 
