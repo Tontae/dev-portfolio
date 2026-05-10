@@ -20,25 +20,27 @@ const Hero3D = dynamic(() => import('../components/Hero3D'), {
 const extendedProjects = Array(10).fill(projectsData).flat();
 
 export default function Home() {
-  const scrollRef = useRef(null);
+  // 🌟 1. บอก TypeScript ว่า ref นี้เอาไปแปะกับแท็ก <div> นะ (HTMLDivElement)
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      const cardWidth = scrollRef.current.children[0].offsetWidth; 
+    if (scrollRef.current && scrollRef.current.children.length > 0) {
+      // 🌟 2. บอก TypeScript ว่า children[0] คือ Element ของ HTML ปกติ (as HTMLElement) จะได้เรียกใช้ offsetWidth ได้แบบไม่ Error
+      const cardWidth = (scrollRef.current.children[0] as HTMLElement).offsetWidth; 
       scrollRef.current.scrollLeft = cardWidth * 25;
     }
   }, []);
 
   const handleNext = () => {
-    if (scrollRef.current) {
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
+    if (scrollRef.current && scrollRef.current.children.length > 0) {
+      const cardWidth = (scrollRef.current.children[0] as HTMLElement).offsetWidth;
       scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
     }
   };
 
   const handlePrev = () => {
-    if (scrollRef.current) {
-      const cardWidth = scrollRef.current.children[0].offsetWidth;
+    if (scrollRef.current && scrollRef.current.children.length > 0) {
+      const cardWidth = (scrollRef.current.children[0] as HTMLElement).offsetWidth;
       scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
     }
   };
@@ -46,18 +48,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f8f9fa] selection:bg-gray-900 selection:text-white">
       
-      {/* 1. NAVBAR - 🌟 แก้ไข: ใช้ flex-1 เพื่อให้มีที่ว่างตรงกลาง และ whitespace-nowrap ห้ามตกบรรทัด */}
+      {/* 1. NAVBAR */}
       <nav className="sticky top-0 z-50 flex items-center justify-between p-4 sm:p-6 bg-white border-b-4 border-gray-900">
         <div className="flex-1 flex justify-start items-center">
           <a href="#" className="block hover:scale-105 transition-transform duration-200">
-            <Image 
-              src="/logo.svg"
-              alt="Tontae Logo" 
-              width={160} 
-              height={48} 
-              className="h-10 sm:h-12 w-auto object-contain" 
-              priority 
-            />
+            <img src="/logo.svg" alt="Tontae Logo" className="h-10 sm:h-12 w-auto object-contain"/>
           </a>
         </div>
         <div className="hidden md:flex flex-1 justify-center items-center gap-12 font-bold text-lg">
@@ -117,12 +112,10 @@ export default function Home() {
         <Reveal delay={0.3}>
           <div className="flex w-full items-center justify-between px-2 sm:px-6 lg:px-12 max-w-[1600px] mx-auto gap-1 sm:gap-4">
             
-            {/* 🌟 แก้ไขลูกศร: เปลี่ยนเป็น SVG เพื่อให้มันอยู่ตรงกลางปุ่มเป๊ะๆ 100% */}
             <button onClick={handlePrev} className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white border-[3px] sm:border-4 border-gray-900 shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all flex items-center justify-center hover:bg-[#d43e35] hover:text-white z-10" aria-label="Previous Project">
               <svg className="w-5 h-5 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
             </button>
 
-            {/* พื้นที่แสดง Project Panel */}
             <div className="flex-1 overflow-hidden">
               <div ref={scrollRef} className="flex overflow-x-auto snap-x snap-mandatory items-stretch [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-2 sm:py-4">
                 
@@ -139,7 +132,6 @@ export default function Home() {
                         <span className="ml-1 sm:ml-2 font-mono text-[9px] sm:text-xs font-bold text-gray-600 italic">{project.exe}</span>
                       </div>
                       
-                      {/* 🌟 แก้ไข: ย่อขนาด Font, Margin, Padding ลงในจอมือถือเพื่อให้การ์ดหดสั้นลง และเห็นข้อมูลครบ */}
                       <div className="p-4 sm:p-6 flex flex-col flex-grow">
                         
                         <div className="relative aspect-video flex-none w-full bg-gray-200 border-[3px] sm:border-4 border-gray-900 mb-3 sm:mb-6 overflow-hidden border-dashed">
@@ -179,7 +171,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 🌟 แก้ไขลูกศร: เปลี่ยนเป็น SVG */}
             <button onClick={handleNext} className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white border-[3px] sm:border-4 border-gray-900 shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all flex items-center justify-center hover:bg-[#00A2FF] hover:text-white z-10" aria-label="Next Project">
                <svg className="w-5 h-5 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
             </button>
@@ -197,7 +188,6 @@ export default function Home() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            {/* 🌟 เปลี่ยนประโยคตรงนี้ได้ตามใจชอบเลยครับ! */}
             <p className="mt-3 sm:mt-4 text-[10px] sm:text-sm font-bold text-gray-600 uppercase tracking-widest max-w-2xl mx-auto text-center w-full">
               My core technologies. Highly adaptable to any engine or pipeline required.
             </p>
@@ -225,10 +215,8 @@ export default function Home() {
           <p className="mb-8 sm:mb-12 font-medium text-sm sm:text-lg text-gray-700">Currently open for freelance projects and full-time opportunities.</p>
         </Reveal>
         
-        {/* 🌟 เพิ่ม items-center เพื่อให้ปุ่มเรียงกึ่งกลางสวยงามตอนอยู่ในจอมือถือ */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
           <Reveal delay={0.3} type="pop">
-            {/* 🌟 ซิงค์คลาสปุ่ม: ใช้ px-5 sm:px-8, py-2.5 sm:py-4 และ text-sm sm:text-lg เหมือน The Arsenal */}
             <a 
               href="mailto:dullayathit@gmail.com" 
               className="px-5 sm:px-8 py-2.5 sm:py-4 bg-white border-[3px] sm:border-4 border-gray-900 font-black text-sm sm:text-lg shadow-[4px_4px_0px_#111827] hover:translate-y-1 hover:translate-x-1 hover:shadow-[0px_0px_0px_#111827] transition-all text-gray-900 cursor-pointer hover:bg-red-500 hover:text-white flex items-center justify-center min-w-[140px] md:min-w-0"
@@ -261,7 +249,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOOTER - 🌟 แก้ไข: ใช้ whitespace-nowrap และลดขนาดฟอนต์ในมือถือเพื่อห้ามตกบรรทัดเด็ดขาด */}
+      {/* 6. FOOTER */}
       <footer className="py-8 sm:py-12 px-4 sm:px-6 bg-white border-t-4 border-gray-900 text-center overflow-hidden">
           <h4 className="text-sm sm:text-2xl font-black text-gray-900 uppercase italic whitespace-nowrap tracking-tighter sm:tracking-normal">
             Tontae /// Software Engineer

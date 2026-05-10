@@ -2,42 +2,50 @@
 
 import { useEffect, useState } from 'react';
 
+// 🌟 1. สร้าง Interface เพื่อบอกว่าข้อมูลสัญลักษณ์ 1 ตัว มีตัวเลขอะไรบ้าง
+interface FloatingSymbol {
+  id: number;
+  shapeId: number;
+  left: number;
+  size: number;
+  duration: number;
+  delay: number;
+}
+
 export default function FloatingSymbols() {
-  const [symbols, setSymbols] = useState([]);
+  // 🌟 2. ใส่ <FloatingSymbol[]> เพื่อบอกว่า symbols เป็น Array ของข้อมูลด้านบนนะ
+  const [symbols, setSymbols] = useState<FloatingSymbol[]>([]);
 
   useEffect(() => {
-    // ลดจำนวนลงเหลือ 12 ตัว (เพราะสัญลักษณ์ใหญ่ขึ้น ถ้ามีเยอะไปจะดูลายตา)
     const count = 12;
-    const laneWidth = 100 / count; // ซอยหน้าจอเป็น 12 เลน (เลนละ ~8.33%)
+    const laneWidth = 100 / count; 
 
-    const generatedSymbols = Array.from({ length: count }).map((_, i) => {
-      // พระเอกของเรา! บังคับให้อยู่ในเลนของตัวเอง (i * laneWidth) 
-      // บวกค่าสุ่มนิดหน่อย (ไม่เกินครึ่งเลน) ให้ไม่ดูเรียงเป็นแถวทหารเกินไป
+    // 🌟 3. บอกว่า Array.from นี้จะคืนค่าออกมาเป็น FloatingSymbol[]
+    const generatedSymbols: FloatingSymbol[] = Array.from({ length: count }).map((_, i) => {
       const randomOffset = Math.random() * (laneWidth * 0.5); 
       const leftPosition = (i * laneWidth) + randomOffset;
 
       return {
         id: i,
         shapeId: Math.floor(Math.random() * 4),
-        left: leftPosition, // อยู่ในเลนใครเลนมัน รับประกันว่าไม่ทับกันแนวนอน
-        size: Math.random() * 40 + 40, // ขยายขนาดใหญ่ขึ้น (สุ่มระหว่าง 40px - 80px)
-        duration: Math.random() * 15 + 20, // ลอยช้าลงนิดนึงเพื่อความสมูท (20-35 วินาที)
-        delay: Math.random() * 30, // เวลาเริ่มติดลบ ให้ลอยตั้งแต่เปิดเว็บ
+        left: leftPosition, 
+        size: Math.random() * 40 + 40, 
+        duration: Math.random() * 15 + 20, 
+        delay: Math.random() * 30, 
       };
     });
     
-    // สลับตำแหน่งใน Array แบบสุ่ม เพื่อให้แอนิเมชันเกิดการเหลื่อมกันดูมีมิติมากขึ้น
     setSymbols(generatedSymbols.sort(() => Math.random() - 0.5));
   }, []);
 
-  const renderShape = (id) => {
+  // 🌟 4. ระบุว่ารับค่า id เป็นตัวเลข (number)
+  const renderShape = (id: number) => {
     const svgProps = {
       viewBox: "0 0 24 24",
       className: "w-full h-full fill-none stroke-current",
-      // 👇 เปลี่ยนตรงนี้จาก "3" เป็น "2" เพื่อให้เส้นบางและคลีนขึ้นครับ
       strokeWidth: "2", 
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
+      strokeLinecap: "round" as const, // 🌟 ทริค TS: ใส่ as const เพื่อยืนยันว่ามันคือคำว่า round เป๊ะๆ ไม่ใช่ string ธรรมดา
+      strokeLinejoin: "round" as const,
     };
     
     switch(id) {
@@ -78,7 +86,7 @@ export default function FloatingSymbols() {
       <style>{`
         @keyframes floatAndSpin {
           0% { top: 110%; transform: rotate(0deg); opacity: 0; }
-          10% { opacity: 0.2; } /* ลายน้ำจางๆ 20% เพื่อความคลีน ไม่แย่งซีนตัวหนังสือ */
+          10% { opacity: 0.2; } 
           90% { opacity: 0.2; }
           100% { top: -30%; transform: rotate(360deg); opacity: 0; }
         }

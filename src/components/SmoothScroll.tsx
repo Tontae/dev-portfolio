@@ -1,27 +1,38 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, ReactNode } from 'react';
 import Lenis from 'lenis';
 
-export default function SmoothScroll({ children }) {
+// 🌟 1. กำหนด Type ให้ Props
+interface SmoothScrollProps {
+  children: ReactNode;
+}
+
+export default function SmoothScroll({ children }: SmoothScrollProps) {
   useEffect(() => {
     // 1. ตั้งค่า Lenis Engine
     const lenis = new Lenis({
       duration: 1.2, 
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      // 🌟 2. กำหนดให้ t เป็นตัวเลข (number)
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
       smoothWheel: true,
     });
 
-    function raf(time) {
+    // 🌟 3. กำหนดให้ time เป็นตัวเลข (number)
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
     // 2. ใช้ Event Delegation ดักฟังการคลิกทั้งหน้าต่าง
-    const handleClick = (e) => {
-      // หาแท็ก <a> ที่ใกล้ที่สุดจากการคลิก
-      const anchor = e.target.closest('a'); 
+    // 🌟 4. กำหนดให้ e เป็น MouseEvent
+    const handleClick = (e: MouseEvent) => {
+      // 🌟 5. ยืนยันว่า e.target คือ HTMLElement เพื่อให้ใช้คำสั่ง .closest() ได้
+      const target = e.target as HTMLElement;
+      
+      // หาแท็ก <a /> ที่ใกล้ที่สุดจากการคลิก
+      const anchor = target.closest('a'); 
       if (!anchor) return; // ถ้าไม่ได้คลิกโดนลิงก์ ให้ผ่านไป
 
       const href = anchor.getAttribute('href');

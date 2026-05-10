@@ -3,7 +3,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function YouTubeEmbed({ videoId, coverSrc }) {
+// 🌟 1. สร้าง Interface กำหนดชนิดของ Props
+interface YouTubeEmbedProps {
+  videoId: string;
+  coverSrc: string;
+}
+
+// 🌟 2. นำ Interface มาครอบ Props ของ Component
+export default function YouTubeEmbed({ videoId, coverSrc }: YouTubeEmbedProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // เมื่อกดเล่น โหลด YouTube Embed ปกติ
@@ -37,12 +44,9 @@ export default function YouTubeEmbed({ videoId, coverSrc }) {
       <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
         
         {/* CONTAINER ปุ่ม PLAY (วงกลมแดง) */}
-        {/* ปรับปรุง: เอา border-4 border-gray-900 ออกเรียบร้อยครับ */}
-        {/* ปรับปรุง: จัดตรงกลางเป๊ะๆ ด้วย flex items-center justify-center */}
         <div className="w-16 h-16 bg-[#FF0000] flex items-center justify-center rounded-full transition-transform group-hover:scale-110">
           
           {/* ไอคอนสามเหลี่ยม (จัดกึ่งกลางเป๊ะ) */}
-          {/* การใช้ SVG หรืออักขระพิเศษพิกัดจะเป๊ะกว่าการใช้ text character ปกติครับ */}
           <div className="text-white text-3xl translate-x-0.5">
             ▶
           </div>
